@@ -56,8 +56,7 @@ The Mockup Workflow Platform is built around a configurable workflow engine rath
 
 Workflows are composed of ordered processing steps executed by registered processors, allowing new products and production pipelines to be added without redesigning the core platform.
 ---
-## Technology Stack
-## Technology Stack
+## Technology 
 
 ### Languages
 - C#
