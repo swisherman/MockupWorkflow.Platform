@@ -1,0 +1,68 @@
+# -----------------------------
+# Visual Studio
+# -----------------------------
+.vs/
+.vscode/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Build artifacts
+bin/
+obj/
+
+# Rider
+.idea/
+
+# -----------------------------
+# OS files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Environment files
+# -----------------------------
+.env
+.env.*
+
+# Keep the example configuration
+!.env.example
+
+# -----------------------------
+# Docker
+# -----------------------------
+docker-compose.override.yml
+
+# -----------------------------
+# Secrets
+# -----------------------------
+secrets/
+*.pfx
+*.snk
+*.key
+*.pem
+
+# -----------------------------
+# Temporary files
+# -----------------------------
+*.tmp
+*.bak
+*.cache
+
+# -----------------------------
+# Generated documentation
+# -----------------------------
+docs/site/
+
+# -----------------------------
+# Generated diagrams
+# -----------------------------
+*.drawio.bkp

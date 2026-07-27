@@ -1,0 +1,10 @@
+* text=auto
+
+*.cs      text
+*.js      text
+*.json    text
+*.md      text
+*.yml     text
+*.yaml    text
+*.ps1     text
+*.sh      text
