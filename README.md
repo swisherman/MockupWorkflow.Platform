@@ -8,9 +8,7 @@
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
 ![Status](https://img.shields.io/badge/Status-Active_Development-success)
 
-Mockup Workflow Platform is a distributed workflow automation platform for high-volume creative production. It orchestrates Adobe Photoshop, ASP.NET Core services, Docker, MongoDB, and Blazor into configurable pipelines for automated asset generation, mockup production, and digital publishing.
-The platform combines Adobe Photoshop UXP, ASP.NET Core microservices, Docker, MongoDB, and Blazor to automate high-volume asset generation, mockup production, and digital publishing workflows.
----
+Mockup Workflow Platform is a distributed workflow automation platform for high-volume creative production. It combines Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflow pipelines that automate asset generation, mockup production, and digital publishing.
 ## Project Status
 
 **Status:** Active Development
@@ -25,13 +23,11 @@ Current capabilities include:
 - Administrative dashboard
 - Asset management APIs
 - Workflow monitoring
----
 
 ## Platform Architecture
 
 ![Platform Architecture](docs/images/architecture-overview.svg)
 
----
 ## Overview
 
 Mockup Workflow Platform is a modular automation platform designed around reusable workflow concepts rather than product-specific logic.
@@ -47,20 +43,33 @@ The platform separates:
 
 This architecture allows multiple products and content pipelines to share the same workflow engine.
 
----
+## What This Demonstrates
+
+This project showcases experience designing and building a distributed workflow automation platform from the ground up, including:
+
+- Distributed system architecture
+- Adobe Photoshop UXP development
+- ASP.NET Core Web APIs
+- Blazor Server applications
+- MongoDB data modeling
+- Docker containerization
+- Workflow engine design
+- Batch processing pipelines
+- Service-oriented architecture
+- End-to-end production automation
+
 ## Why It Exists
 
 Creative production often requires repeating the same Photoshop operations hundreds or thousands of times.
 
 The Mockup Workflow Platform automates those repetitive tasks through configurable workflows, allowing new product pipelines to be added without redesigning the core system.
----
 
 ## Architecture 
 
 The Mockup Workflow Platform is built around a configurable workflow engine rather than product-specific automation.
 
 Workflows are composed of ordered processing steps executed by registered processors, allowing new products and production pipelines to be added without redesigning the core platform.
----
+
 ## Technology 
 
 ### Languages
@@ -81,9 +90,6 @@ Workflows are composed of ordered processing steps executed by registered proces
 - Distributed Services
 - Workflow Engine
 
-
----
-
 ## Platform Components
 
 | Component | Technology | Responsibility |
@@ -95,149 +101,264 @@ Workflows are composed of ordered processing steps executed by registered proces
 | **PNGAPI** | ASP.NET Core Web API | Stores and serves generated image assets through REST endpoints |
 | **photoshop-uxp-batch-mockup-plugin** | Adobe UXP / JavaScript | Executes Photoshop workflow steps, processes PSD templates, and generates mockups |
 | **MockupWorkflow.Shared** | .NET Class Library | Shared domain models, DTOs, repository abstractions, and workflow contracts |---
+------
+## Repository Structure
+
+The Mockup Workflow Platform is composed of several focused repositories that work together to automate large-scale Photoshop production workflows.
+
+```text
+MockupWorkflow.Platform/
+├── photoshop-uxp-batch-mockup-plugin/
+├── PhotoshopAutomation.Api/
+├── MockupWorkflow.Admin/
+├── FolderCreator.API/
+├── PNGAPI/
+├── MockupWorkflow.Shared/
+└── MockupWorkflow.BuildUploader/
+```
+
+Each repository has a single responsibility:
+
+| Repository | Purpose |
+|------------|---------|
+| **MockupWorkflow.Platform** | Platform overview, architecture, documentation, and orchestration |
+| **Photoshop UXP Plugin** | Adobe Photoshop UXP workflow engine |
+| **PhotoshopAutomation.Api** | REST API for workflow processing |
+| **MockupWorkflow.Admin** | Blazor administration dashboard |
+| **FolderCreator.API** | Folder creation and file preparation service |
+| **PNGAPI** | PNG storage and retrieval service |
+| **MockupWorkflow.Shared** | Shared models and contracts |
+| **MockupWorkflow.BuildUploader** | Build asset upload utility |
+----
 
 ## Photoshop UXP Plugin
 
-The Photoshop client responsible for:
+**Purpose**
 
-- Loading workflow batches
-- Opening PSD templates
-- Executing workflow processors
-- Replacing Smart Objects
-- Exporting generated artwork
-- Reporting workflow status
+Serves as the Photoshop execution engine for the platform, automating production workflows through configurable, multi-step processing pipelines.
 
----
+**Responsibilities**
 
-## PhotoshopAutomationApi
+- Load pending workflow batches
+- Execute configurable workflow steps
+- Open and process Photoshop PSD templates
+- Replace Smart Object contents
+- Generate production-ready mockups
+- Upload generated assets
+- Report workflow completion and failures
 
-Coordinates workflow execution.
+**Technologies**
 
-Responsibilities include:
+- Adobe Photoshop UXP
+- JavaScript
+- Photoshop DOM & BatchPlay APIs
+- REST APIs
 
-- Batch management
-- Processing state
-- Workflow endpoints
-- Queue management
-- Completion reporting
+**Repository**
 
----
+[swisherman/photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)
+
+## PhotoshopAutomation.Api
+
+**Purpose**
+
+Coordinates workflow execution by managing batch processing, exposing REST endpoints, and serving as the central orchestration service between the Photoshop UXP plug-in, administration dashboard, and supporting services.
+
+**Responsibilities**
+
+- Register and manage workflow batches
+- Expose REST API endpoints
+- Coordinate workflow execution
+- Manage processing state
+- Queue pending work
+- Report workflow completion and failures
+
+**Technologies**
+
+- ASP.NET Core
+- REST APIs
+- MongoDB
+- Docker
+
+**Repository**
+
+> *Public repository coming soon.*
 
 ## MockupWorkflow.Admin
 
-Blazor Server application providing:
+**Purpose**
 
-- Batch monitoring
-- Workflow status
-- Import tools
-- Processing history
-- Administrative dashboards
+Provides a Blazor-based administration dashboard for monitoring, managing, and troubleshooting workflow execution across the Mockup Workflow Platform.
 
----
+**Responsibilities**
 
-## FolderCreatorApi
+- Monitor workflow batches in real time
+- View batch and processing status
+- Track completed, pending, and failed jobs
+- Display workflow progress and processing metrics
+- Review processing errors and diagnostics
+- Support operational management of production workflows
 
-Responsible for:
+**Technologies**
 
-- Folder generation
-- Build folder preparation
-- Safe path creation
-- Input/output directory management
+- ASP.NET Core
+- Blazor Server
+- MudBlazor
+- MongoDB
+- Docker
 
----
+**Repository**
+
+> *Public repository coming soon.*
+
+## FolderCreator.API
+
+**Purpose**
+
+Prepares the file system structure required for each workflow batch by creating standardized input and output directories before Photoshop processing begins.
+
+**Responsibilities**
+
+- Create workflow batch folder structures
+- Prepare input and output directories
+- Organize assets by batch and product type
+- Validate folder layouts
+- Support automated workflow initialization
+
+**Technologies**
+
+- ASP.NET Core
+- REST API
+- Docker
+
+**Repository**
+
+> *Public repository coming soon.*
 
 ## PNGAPI
 
-Provides image asset services.
+**Purpose**
 
-Responsibilities include:
+Provides centralized storage and retrieval of workflow assets, enabling generated mockups and supporting files to be uploaded, organized, and accessed consistently across the platform.
 
-- PNG upload
-- PNG download
-- Generated asset storage
-- Shared Docker volume access
+**Responsibilities**
 
----
+- Upload generated workflow assets
+- Retrieve images and supporting files
+- Organize assets by batch and product type
+- Provide REST endpoints for asset management
+- Support integration between workflow services
+
+**Technologies**
+
+- ASP.NET Core
+- REST API
+- Docker
+
+**Repository**
+
+> *Public repository coming soon.*
 
 ## MockupWorkflow.Shared
 
-Shared library containing:
+**Purpose**
 
-- Domain models
-- Repository abstractions
-- DTOs
-- Shared constants
-- Common workflow logic
+Provides shared models, contracts, and common libraries used across the Mockup Workflow Platform to ensure consistency between services.
 
----
+**Responsibilities**
+
+- Define shared data models
+- Maintain common DTOs and contracts
+- Provide reusable utility classes
+- Standardize communication between services
+- Reduce duplicated code across repositories
+
+**Technologies**
+
+- .NET 10
+- C#
+- Shared Class Library
+
+**Repository**
+
+> *Public repository coming soon.*
 
 ## MockupWorkflow.BuildUploader
 
-Imports new build artifacts into the workflow.
+**Purpose**
 
-Responsibilities include:
+Provides a command-line utility for preparing and uploading workflow assets into the platform while preserving the expected batch and product directory structure.
 
-- Build registration
-- Incoming asset preparation
-- Workflow initialization
+**Responsibilities**
 
----
+- Upload input folders
+- Upload mockup folders
+- Preserve batch directory structures
+- Support workflow initialization
+- Integrate with PNGAPI
 
-# Workflow
+**Technologies**
 
-The Mockup Workflow Platform automates creative production through a configurable, multi-stage processing pipeline.
+- .NET 10
+- C#
+- Command-Line Interface (CLI)
+- REST API
+
+**Repository**
+
+> *Public repository coming soon.*
+
+## Workflow
+
+The Mockup Workflow Platform automates creative production through a configurable, multi-stage processing pipeline. Each component has a well-defined responsibility, allowing the platform to scale as new product types and workflow steps are added.
+
+### End-to-End Workflow
 
 ```text
 Source Artwork
-      │
-      ▼
+        |
+        v
 MockupWorkflow.BuildUploader
-      │
-      ▼
-Batch Registration
-      │
-      ▼
+        |
+        v
 PhotoshopAutomation.Api
-      │
-      ▼
-Pending Workflow Queue
-      │
-      ▼
+        |
+        v
+MongoDB Workflow Queue
+        |
+        v
 Photoshop UXP Plugin
-      │
-      ▼
+        |
+        v
 Workflow Engine
-      │
-      ▼
-Ordered Workflow Steps
-      │
-      ▼
-Adobe Photoshop
-      │
-      ▼
+        |
+        +--> Step 10 - Artwork Generation
+        |
+        +--> Step 20 - Mockup Generation
+        |
+        +--> Future Workflow Steps...
+        |
+        v
 Generated Mockups
-      │
-      ▼
+        |
+        v
 PNGAPI
-      │
-      ▼
-Workflow Status Update
-      │
-      ▼
+        |
+        v
 MockupWorkflow.Admin
 ```
 
-Each stage has a clearly defined responsibility:
+### Workflow Summary
 
-1. **BuildUploader** prepares incoming assets and creates a workflow batch.
-2. **PhotoshopAutomation.Api** manages workflow state and exposes REST endpoints.
-3. The **Photoshop UXP Plugin** retrieves pending work and executes the configured workflow.
-4. **Adobe Photoshop** performs the image processing defined by each workflow step.
-5. **PNGAPI** stores generated assets for downstream consumers.
-6. **MockupWorkflow.Admin** provides real-time visibility into workflow progress and processing status.
----
+1. **BuildUploader** prepares and uploads production assets.
+2. **PhotoshopAutomation.Api** registers workflow batches and exposes REST endpoints.
+3. **MongoDB** stores workflow definitions, batch status, and processing state.
+4. **Photoshop UXP Plugin** retrieves pending batches and executes the workflow.
+5. **Workflow Engine** processes each configured workflow step in sequence.
+6. **PNGAPI** stores the generated mockups.
+7. **MockupWorkflow.Admin** provides real-time monitoring and batch management.
 
-# Design Principles
+## Design Principles
 
 - Modular services
 - Workflow-driven architecture
@@ -246,17 +367,24 @@ Each stage has a clearly defined responsibility:
 - Docker-based deployment
 - Extensible processor pipeline
 
----
-
 ## Roadmap
+
+### Near Term
 
 - Additional workflow processors
 - Workflow configuration editor
 - Additional product pipelines
+- Public release of additional platform components
+
+### Future
+
 - Cloud storage providers
 - Marketplace publishing integration
+- Distributed worker processing
+- Workflow designer and visual editor
+- Additional creative production pipelines
 
-# Example Consumers
+## Example Consumers
 
 The platform is designed to support multiple applications.
 
@@ -270,7 +398,6 @@ Future consumers may include:
 - Marketplace automation tools
 - Product generation pipelines
 
----
 ## Key Features
 
 - Configurable multi-step workflow engine
