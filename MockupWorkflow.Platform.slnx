@@ -1,17 +1,22 @@
 <Solution>
-  <Folder Name="/MockupWorkflow/">
+  <Folder Name="/APIS/">
     <Project Path="../MockupWorkflow/FolderCreator.API/FolderCreatorApi.csproj" />
-    <Project Path="../MockupWorkflow/MockupWorkflow.Admin/src/MockupWorkflow.Admin.Web/MockupWorkflow.Admin.Web.csproj" />
-    <Project Path="../MockupWorkflow/MockupWorkflow.Shared/src/MockupWorkflow.Shared/MockupWorkflow.Shared.csproj" />
     <Project Path="../MockupWorkflow/PhotoshopAutomation.Api/src/PhotoshopAutomation.Api/PhotoshopAutomationApi.csproj" />
     <Project Path="../MockupWorkflow/PNGAPI/src/PNGAPI/PNGAPI.csproj" />
+  </Folder>
+  <Folder Name="/Applications/">
+    <Project Path="../MockupWorkflow/MockupWorkflow.Admin/src/MockupWorkflow.Admin.Web/MockupWorkflow.Admin.Web.csproj" />
     <Project Path="../MockupWorkflow/tools/BuildUploader/src/MockupWorkflow.BuildUploader.csproj" />
   </Folder>
-  <Folder Name="/PhotoshopPlugin/">
+  <Folder Name="/Photoshop/" />
+  <Folder Name="/Photoshop/PhotoshopPlugin/">
     <File Path="../photoshop-uxp-batch-mockup-plugin/src/config.example.js" />
     <File Path="../photoshop-uxp-batch-mockup-plugin/src/config.js" />
     <File Path="../photoshop-uxp-batch-mockup-plugin/src/index.html" />
     <File Path="../photoshop-uxp-batch-mockup-plugin/src/main.js" />
     <File Path="../photoshop-uxp-batch-mockup-plugin/src/manifest.json" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="../MockupWorkflow/MockupWorkflow.Shared/src/MockupWorkflow.Shared/MockupWorkflow.Shared.csproj" />
   </Folder>
 </Solution>
