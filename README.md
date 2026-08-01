@@ -94,27 +94,29 @@ Workflows are composed of ordered processing steps executed by registered proces
 
 | Component | Technology | Responsibility |
 |-----------|------------|----------------|
-| **MockupWorkflow.BuildUploader** | .NET 10 CLI | Imports build assets and initializes workflow batches |
-| **PhotoshopAutomation.Api** | ASP.NET Core Web API | Coordinates workflow execution, batch management, and processing state |
-| **MockupWorkflow.Admin** | Blazor Server | Administrative dashboard for monitoring, imports, and workflow management |
-| **FolderCreator.API** | ASP.NET Core Web API | Creates and prepares input/output folder structures |
-| **PNGAPI** | ASP.NET Core Web API | Stores and serves generated image assets through REST endpoints |
-| **photoshop-uxp-batch-mockup-plugin** | Adobe UXP / JavaScript | Executes Photoshop workflow steps, processes PSD templates, and generates mockups |
-| **MockupWorkflow.Shared** | .NET Class Library | Shared domain models, DTOs, repository abstractions, and workflow contracts |---
-------
-## Repository Structure
+| **[MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)** | .NET 10 CLI | Imports build assets and initializes workflow batches |
+| **[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)** | ASP.NET Core Web API | Coordinates workflow execution, batch management, and processing state |
+| **MockupWorkflow.Admin** *(public repository coming soon)* | Blazor Server | Administrative dashboard for monitoring, imports, and workflow management |
+| **[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)** | ASP.NET Core Web API | Creates and prepares input/output folder structures |
+| **PNGAPI** *(public repository coming soon)* | ASP.NET Core Web API | Stores and serves generated image assets through REST endpoints |
+| **[photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)** | Adobe UXP / JavaScript | Executes Photoshop workflow steps, processes PSD templates, and generates mockups |
+| **MockupWorkflow.Shared** *(public repository coming soon)* | .NET Class Library | Shared domain models, DTOs, repository abstractions, and workflow contracts |
 
-The Mockup Workflow Platform is composed of several focused repositories that work together to automate large-scale Photoshop production workflows.
+---
+
+## Repository Ecosystem
+
+The Mockup Workflow Platform is implemented across several focused repositories. Each repository owns one part of the workflow while this repository serves as the architectural overview and navigation hub.
 
 ```text
-MockupWorkflow.Platform/
-├── photoshop-uxp-batch-mockup-plugin/
-├── PhotoshopAutomation.Api/
-├── MockupWorkflow.Admin/
-├── FolderCreator.API/
-├── PNGAPI/
-├── MockupWorkflow.Shared/
-└── MockupWorkflow.BuildUploader/
+Mockup Workflow Platform
+├── photoshop-uxp-batch-mockup-plugin
+├── PhotoshopAutomation.Api
+├── MockupWorkflow.Admin
+├── FolderCreator.API
+├── PNGAPI
+├── MockupWorkflow.Shared
+└── MockupWorkflow.BuildUploader
 ```
 
 Each repository has a single responsibility:
@@ -182,7 +184,7 @@ Coordinates workflow execution by managing batch processing, exposing REST endpo
 
 **Repository**
 
-> *Public repository coming soon.*
+[swisherman/PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)
 
 ## MockupWorkflow.Admin
 
@@ -233,7 +235,7 @@ Prepares the file system structure required for each workflow batch by creating 
 
 **Repository**
 
-> *Public repository coming soon.*
+[swisherman/FolderCreator.API](https://github.com/swisherman/FolderCreator.API)
 
 ## PNGAPI
 
@@ -306,7 +308,7 @@ Provides a command-line utility for preparing and uploading workflow assets into
 
 **Repository**
 
-> *Public repository coming soon.*
+[swisherman/MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)
 
 ## Workflow
 
