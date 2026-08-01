@@ -147,14 +147,13 @@ Workflows are composed of ordered processing steps executed by registered proces
 
 | Component | Status | Technology | Responsibility |
 |-----------|:------:|------------|----------------|
-| MockupWorkflow.BuildUploader      | ✅ Public       | .NET 10 CLI          | Imports build assets and initializes workflow batches.           |
-| PhotoshopAutomation.Api           | ✅ Public       | ASP.NET Core         | Coordinates workflow execution, batch management, and processing state. |
+| **[MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)** | ✅ Public | .NET 10 CLI | Imports build assets and initializes workflow batches. |
+| **[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)** | ✅ Public | ASP.NET Core | Coordinates workflow execution, batch management, and processing state. |
 | **[MockupWorkflow.Admin](https://github.com/swisherman/MockupWorkflow.Admin)** | ✅ Public | Blazor Server | Provides an administrative dashboard for monitoring workflow execution. |
-| FolderCreator.API                 | ✅ Public       | ASP.NET Core | Creates standardized input and output folder structures.      |
-| PNGAPI                            | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs.        |
-| photoshop-uxp-batch-mockup-plugin | ✅ Public       | Adobe Photoshop UXP            | Executes Photoshop workflow steps and generates production mockups.         |
-| MockupWorkflow.Shared             | 🚧 Coming Soon | .NET Class Library   | Provides shared domain models, contracts, and common libraries.               |
-
+| **[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)** | ✅ Public | ASP.NET Core | Creates standardized input and output folder structures. |
+| PNGAPI *(public repository coming soon)* | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs. |
+| **[photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)** | ✅ Public | Adobe Photoshop UXP | Executes Photoshop workflow steps and generates production mockups. |
+| MockupWorkflow.Shared *(public repository coming soon)* | 🚧 Coming Soon | .NET Class Library | Provides shared domain models, contracts, and common libraries. |
 ---
 
 ## Repository Ecosystem
