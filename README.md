@@ -28,6 +28,48 @@ Current capabilities include:
 
 ![Platform Architecture](docs/images/architecture-overview.svg)
 
+## Explore the Platform
+
+The Mockup Workflow Platform is distributed across several focused repositories. Start with the component that best matches what you want to explore.
+
+### Start with the Architecture
+
+This repository provides the system-level overview, architecture documentation, workflow description, and links to the individual platform components.
+
+### Explore the Photoshop Automation
+
+[Photoshop UXP Batch Mockup Plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)
+
+See how the platform executes configurable Photoshop workflows, processes PSD templates, replaces artwork, generates mockups, and reports processing results.
+
+### Explore the Workflow API
+
+[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)
+
+Review the ASP.NET Core API responsible for workflow records, batch processing, queue state, completion tracking, and communication with the Photoshop plug-in.
+
+### Explore Folder Preparation
+
+[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)
+
+See how standardized batch and product folder structures are created from structured requests before creative processing begins.
+
+### Explore Asset Uploads
+
+[MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)
+
+Review the .NET command-line utility used to upload prepared input and mockup folders while preserving the platform’s expected directory structure.
+
+### Recommended Review Path
+
+For a complete tour of the system:
+
+1. Review the architecture diagram in this repository.
+2. Explore `PhotoshopAutomation.Api` to understand workflow state and orchestration.
+3. Explore the Photoshop UXP plug-in to see workflow execution inside Adobe Photoshop.
+4. Review `FolderCreator.API` and `MockupWorkflow.BuildUploader` to understand asset preparation and movement.
+5. Review the end-to-end workflow below to see how the components operate together.
+
 ## Overview
 
 Mockup Workflow Platform is a modular automation platform designed around reusable workflow concepts rather than product-specific logic.
