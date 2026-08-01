@@ -9,9 +9,10 @@
 ![Status](https://img.shields.io/badge/Status-Active_Development-success)
 
 Mockup Workflow Platform is a distributed workflow automation platform for high-volume creative production. It combines Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflow pipelines that automate asset generation, mockup production, and digital publishing.
+
 ## Project Status
 
-**Status:** Active Development
+**Status:** Active Development (Portfolio Release)
 
 The Mockup Workflow Platform is under active development and serves as the foundation for automated mockup generation and digital publishing workflows.
 
@@ -128,21 +129,21 @@ Workflows are composed of ordered processing steps executed by registered proces
 - MongoDB
 
 ### Architecture
+
 - REST APIs
-- Distributed Services
+- Service-Oriented Architecture
 - Workflow Engine
 
 ## Platform Components
 
-| Component                         | Status         | Technology           | Responsibility                    |
-| --------------------------------- | -------------- | -------------------- | --------------------------------- |
-| MockupWorkflow.BuildUploader      | ✅ Public       | .NET CLI          | Imports build assets and initializes workflow batches.           |
+| Component | Status | Technology | Responsibility |
+|-----------|:------:|------------|----------------|| MockupWorkflow.BuildUploader      | ✅ Public       | .NET 10 CLI          | Imports build assets and initializes workflow batches.           |
 | PhotoshopAutomation.Api           | ✅ Public       | ASP.NET Core         | Coordinates workflow execution, batch management, and processing state. |
 | MockupWorkflow.Admin              | 🚧 Coming Soon | Blazor Server        | Provides an administrative dashboard for monitoring workflow execution.       |
 | FolderCreator.API                 | ✅ Public       | ASP.NET Core | Creates standardized input and output folder structures.      |
-| PNGAPI                            | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs..        |
-| photoshop-uxp-batch-mockup-plugin | ✅ Public       | Adobe PhotoshopUXP            | Executes Photoshop workflow steps and generates production mockups.         |
-| MockupWorkflow.Shared             | 🚧 Coming Soon | .NET Class Library   | Provides shared domain models, contracts, and common libraries..               |
+| PNGAPI                            | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs.        |
+| photoshop-uxp-batch-mockup-plugin | ✅ Public       | Adobe Photoshop UXP            | Executes Photoshop workflow steps and generates production mockups.         |
+| MockupWorkflow.Shared             | 🚧 Coming Soon | .NET Class Library   | Provides shared domain models, contracts, and common libraries.               |
 
 ---
 
@@ -173,7 +174,8 @@ Each repository has a single responsibility:
 | **PNGAPI** | PNG storage and retrieval service |
 | **MockupWorkflow.Shared** | Shared models and contracts |
 | **MockupWorkflow.BuildUploader** | Build asset upload utility |
-----
+
+---
 
 ## Photoshop UXP Plugin
 
