@@ -134,15 +134,15 @@ Workflows are composed of ordered processing steps executed by registered proces
 
 ## Platform Components
 
-| Component | Technology | Responsibility |
-|-----------|------------|----------------|
-| **[MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)** | .NET 10 CLI | Imports build assets and initializes workflow batches |
-| **[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)** | ASP.NET Core Web API | Coordinates workflow execution, batch management, and processing state |
-| **MockupWorkflow.Admin** *(public repository coming soon)* | Blazor Server | Administrative dashboard for monitoring, imports, and workflow management |
-| **[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)** | ASP.NET Core Web API | Creates and prepares input/output folder structures |
-| **PNGAPI** *(public repository coming soon)* | ASP.NET Core Web API | Stores and serves generated image assets through REST endpoints |
-| **[photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)** | Adobe UXP / JavaScript | Executes Photoshop workflow steps, processes PSD templates, and generates mockups |
-| **MockupWorkflow.Shared** *(public repository coming soon)* | .NET Class Library | Shared domain models, DTOs, repository abstractions, and workflow contracts |
+| Component                         | Status         | Technology           | Responsibility                    |
+| --------------------------------- | -------------- | -------------------- | --------------------------------- |
+| MockupWorkflow.BuildUploader      | ✅ Public       | .NET CLI          | Imports build assets and initializes workflow batches.           |
+| PhotoshopAutomation.Api           | ✅ Public       | ASP.NET Core         | Coordinates workflow execution, batch management, and processing state. |
+| MockupWorkflow.Admin              | 🚧 Coming Soon | Blazor Server        | Provides an administrative dashboard for monitoring workflow execution.       |
+| FolderCreator.API                 | ✅ Public       | ASP.NET Core | Creates standardized input and output folder structures.      |
+| PNGAPI                            | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs..        |
+| photoshop-uxp-batch-mockup-plugin | ✅ Public       | Adobe PhotoshopUXP            | Executes Photoshop workflow steps and generates production mockups.         |
+| MockupWorkflow.Shared             | 🚧 Coming Soon | .NET Class Library   | Provides shared domain models, contracts, and common libraries..               |
 
 ---
 
