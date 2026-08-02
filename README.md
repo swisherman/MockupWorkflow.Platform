@@ -8,7 +8,11 @@
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
 ![Status](https://img.shields.io/badge/Status-Active_Development-success)
 
-Mockup Workflow Platform is a distributed workflow automation platform for high-volume creative production. It combines Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflow pipelines that automate asset generation, mockup production, and digital publishing.
+Mockup Workflow Platform is an end-to-end automation platform for high-volume creative production. It integrates Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflows for asset generation, mockup production, and digital publishing.
+
+## Platform Architecture
+
+![Platform Architecture](docs/images/architecture-overview.svg)
 
 ## Project Status
 
@@ -25,9 +29,6 @@ Current capabilities include:
 - Asset management APIs
 - Workflow monitoring
 
-## Platform Architecture
-
-![Platform Architecture](docs/images/architecture-overview.svg)
 
 ## Explore the Platform
 
