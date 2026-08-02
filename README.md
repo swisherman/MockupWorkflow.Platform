@@ -151,7 +151,7 @@ Workflows are composed of ordered processing steps executed by registered proces
 | **[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)** | ✅ Public | ASP.NET Core | Coordinates workflow execution, batch management, and processing state. |
 | **[MockupWorkflow.Admin](https://github.com/swisherman/MockupWorkflow.Admin)** | ✅ Public | Blazor Server | Provides an administrative dashboard for monitoring workflow execution. |
 | **[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)** | ✅ Public | ASP.NET Core | Creates standardized input and output folder structures. |
-| PNGAPI *(public repository coming soon)* | 🚧 Coming Soon | ASP.NET Core | Stores and serves generated workflow assets through REST APIs. |
+| **[PNGAPI](https://github.com/swisherman/PNGAPI)** | ✅ Public | ASP.NET Core / Blazor | Stores, serves, and previews workflow assets through REST APIs and shared storage. |
 | **[photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)** | ✅ Public | Adobe Photoshop UXP | Executes Photoshop workflow steps and generates production mockups. |
 | MockupWorkflow.Shared *(public repository coming soon)* | 🚧 Coming Soon | .NET Class Library | Provides shared domain models, contracts, and common libraries. |
 ---
