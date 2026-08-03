@@ -1,1 +1,69 @@
-cstuff 
+name: photoshop-automation
+
+services:
+  mockupworkflow-admin:
+    build:
+      context: ../../MockupWorkflow
+      dockerfile: MockupWorkflow.Admin/docker/Dockerfile
+    ports:
+      - "27031:8080"
+    volumes:
+      - build-directories:/data/builds
+      - admin-keys:/root/.aspnet/DataProtection-Keys
+      - "${INCOMING_ROOT:?INCOMING_ROOT must be set}:/incoming"
+    env_file:
+      - ./config/mockupworkflow-admin.env
+    depends_on:
+      - mongouxp
+      - photoshopautomation-api
+
+  photoshopautomation-api:
+    build:
+      context: ../../MockupWorkflow
+      dockerfile: PhotoshopAutomation.Api/src/PhotoshopAutomation.Api/Dockerfile
+    ports:
+      - "5767:8080"
+    volumes:
+      - build-directories:/data/builds
+
+    env_file:
+      - ./config/photoshopautomation-api.env
+    depends_on:
+      - mongouxp
+
+
+  pngcontainer-api:
+    build:
+      context: ../../MockupWorkflow/PNGAPI/src/PNGAPI
+      dockerfile: Dockerfile
+    ports:
+        - "27021:8080"
+    env_file:
+      - ./config/pngcontainer-api.env
+    volumes:
+       - build-directories:/data/builds
+
+  foldercreator-api:
+    build:
+      context: ../../MockupWorkflow
+      dockerfile: ./FolderCreator.API/Dockerfile
+    ports:
+      - "27020:8080"
+    volumes:
+      - build-directories:/data/builds
+    env_file:
+      - ./config/foldercreator-api.env
+  
+  mongouxp:
+    image: mongobackup:latest
+    ports:
+      - "27018:27017"
+    volumes: 
+      - mongo-data-for-uxp:/data/db
+      - build-directories:/data/builds
+    env_file:
+      - ./config/mongodb.env
+volumes:
+  build-directories:
+  mongo-data-for-uxp:
+  admin-keys:

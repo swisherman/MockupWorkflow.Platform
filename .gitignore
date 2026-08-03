@@ -66,3 +66,8 @@ docs/site/
 # Generated diagrams
 # -----------------------------
 *.drawio.bkp
+
+
+docker/config/*.env
+!docker/config/*.env.example
+docker/.env
