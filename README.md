@@ -8,11 +8,20 @@
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
 ![Status](https://img.shields.io/badge/Status-Active_Development-success)
 
-Mockup Workflow Platform is an end-to-end automation platform for high-volume creative production. It integrates Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflows for asset generation, mockup production, and digital publishing.
+The Mockup Workflow Platform is an end-to-end automation platform for high-volume creative production. It integrates Adobe Photoshop UXP, ASP.NET Core services, MongoDB, Docker, and Blazor into configurable workflows for asset generation, mockup production, and digital publishing.
 
 ## Platform Architecture
 
 ![Platform Architecture](docs/images/architecture-overview.svg)
+
+## Documentation
+
+For additional information, see:
+
+## Documentation
+
+- [Architecture Overview](docs/Architecture.md)
+- [Deployment Guide](docs/Deployment.md)
 
 ## Project Status
 
@@ -29,6 +38,20 @@ Current capabilities include:
 - Asset management APIs
 - Workflow monitoring
 
+## Quick Start
+
+The Mockup Workflow Platform is orchestrated through Docker Compose.
+
+See:
+
+- `docs/Deployment.md`
+
+for complete setup instructions, including:
+
+- environment configuration
+- Docker startup
+- service verification
+- troubleshooting
 
 ## Explore the Platform
 
@@ -55,8 +78,6 @@ Review the ASP.NET Core API responsible for workflow records, batch processing, 
 [MockupWorkflow.Admin](https://github.com/swisherman/MockupWorkflow.Admin)
 
 Explore the Blazor Server administration dashboard used to import production batches, monitor workflow execution, review processing status, and manage automated Photoshop production workflows.
-
-Review the ASP.NET Core API responsible for workflow records, batch processing, queue state, completion tracking, and communication with the Photoshop plug-in.
 
 ### Explore Folder Preparation
 
@@ -144,225 +165,7 @@ Workflows are composed of ordered processing steps executed by registered proces
 - Service-Oriented Architecture
 - Workflow Engine
 
-## Platform Components
-
-| Component | Status | Technology | Responsibility |
-|-----------|:------:|------------|----------------|
-| **[MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)** | ✅ Public | .NET 10 CLI | Imports build assets and initializes workflow batches. |
-| **[PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)** | ✅ Public | ASP.NET Core | Coordinates workflow execution, batch management, and processing state. |
-| **[MockupWorkflow.Admin](https://github.com/swisherman/MockupWorkflow.Admin)** | ✅ Public | Blazor Server | Provides an administrative dashboard for monitoring workflow execution. |
-| **[FolderCreator.API](https://github.com/swisherman/FolderCreator.API)** | ✅ Public | ASP.NET Core | Creates standardized input and output folder structures. |
-| **[PNGAPI](https://github.com/swisherman/PNGAPI)** | ✅ Public | ASP.NET Core / Blazor | Stores, serves, and previews workflow assets through REST APIs and shared storage. |
-| **[photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)** | ✅ Public | Adobe Photoshop UXP | Executes Photoshop workflow steps and generates production mockups. |
-| MockupWorkflow.Shared *(public repository coming soon)* | 🚧 Coming Soon | .NET Class Library | Provides shared domain models, contracts, and common libraries. |
 ---
-
-## Repository Ecosystem
-
-The Mockup Workflow Platform is implemented across several focused repositories. Each repository owns one part of the workflow while this repository serves as the architectural overview and navigation hub.
-
-```text
-Mockup Workflow Platform
-├── photoshop-uxp-batch-mockup-plugin
-├── PhotoshopAutomation.Api
-├── MockupWorkflow.Admin
-├── FolderCreator.API
-├── PNGAPI
-├── MockupWorkflow.Shared
-└── MockupWorkflow.BuildUploader
-```
-
-Each repository has a single responsibility:
-
-| Repository | Purpose |
-|------------|---------|
-| **MockupWorkflow.Platform** | Platform overview, architecture, documentation, and orchestration |
-| **Photoshop UXP Plugin** | Adobe Photoshop UXP workflow engine |
-| **PhotoshopAutomation.Api** | REST API for workflow processing |
-| **MockupWorkflow.Admin** | Blazor administration dashboard |
-| **FolderCreator.API** | Folder creation and file preparation service |
-| **PNGAPI** | PNG storage and retrieval service |
-| **MockupWorkflow.Shared** | Shared models and contracts |
-| **MockupWorkflow.BuildUploader** | Build asset upload utility |
-
----
-
-## Photoshop UXP Plugin
-
-**Purpose**
-
-Serves as the Photoshop execution engine for the platform, automating production workflows through configurable, multi-step processing pipelines.
-
-**Responsibilities**
-
-- Load pending workflow batches
-- Execute configurable workflow steps
-- Open and process Photoshop PSD templates
-- Replace Smart Object contents
-- Generate production-ready mockups
-- Upload generated assets
-- Report workflow completion and failures
-
-**Technologies**
-
-- Adobe Photoshop UXP
-- JavaScript
-- Photoshop DOM & BatchPlay APIs
-- REST APIs
-
-**Repository**
-
-[swisherman/photoshop-uxp-batch-mockup-plugin](https://github.com/swisherman/photoshop-uxp-batch-mockup-plugin)
-
-## PhotoshopAutomation.Api
-
-**Purpose**
-
-Coordinates workflow execution by managing batch processing, exposing REST endpoints, and serving as the central orchestration service between the Photoshop UXP plug-in, administration dashboard, and supporting services.
-
-**Responsibilities**
-
-- Register and manage workflow batches
-- Expose REST API endpoints
-- Coordinate workflow execution
-- Manage processing state
-- Queue pending work
-- Report workflow completion and failures
-
-**Technologies**
-
-- ASP.NET Core
-- REST APIs
-- MongoDB
-- Docker
-
-**Repository**
-
-[swisherman/PhotoshopAutomation.Api](https://github.com/swisherman/PhotoshopAutomation.Api)
-
-## MockupWorkflow.Admin
-
-**Purpose**
-
-Provides a Blazor-based administration dashboard for monitoring, managing, and troubleshooting workflow execution across the Mockup Workflow Platform.
-
-**Responsibilities**
-
-- Monitor workflow batches in real time
-- View batch and processing status
-- Track completed, pending, and failed jobs
-- Display workflow progress and processing metrics
-- Review processing errors and diagnostics
-- Support operational management of production workflows
-
-**Technologies**
-
-- ASP.NET Core
-- Blazor Server
-- MudBlazor
-- MongoDB
-- Docker
-
-**Repository**
-
-[swisherman/MockupWorkflow.Admin](https://github.com/swisherman/MockupWorkflow.Admin)
-
-## FolderCreator.API
-
-**Purpose**
-
-Prepares the file system structure required for each workflow batch by creating standardized input and output directories before Photoshop processing begins.
-
-**Responsibilities**
-
-- Create workflow batch folder structures
-- Prepare input and output directories
-- Organize assets by batch and product type
-- Validate folder layouts
-- Support automated workflow initialization
-
-**Technologies**
-
-- ASP.NET Core
-- REST API
-- Docker
-
-**Repository**
-
-[swisherman/FolderCreator.API](https://github.com/swisherman/FolderCreator.API)
-
-## PNGAPI
-
-**Purpose**
-
-Provides centralized storage and retrieval of workflow assets, enabling generated mockups and supporting files to be uploaded, organized, and accessed consistently across the platform.
-
-**Responsibilities**
-
-- Upload generated workflow assets
-- Retrieve images and supporting files
-- Organize assets by batch and product type
-- Provide REST endpoints for asset management
-- Support integration between workflow services
-
-**Technologies**
-
-- ASP.NET Core
-- REST API
-- Docker
-
-**Repository**
-
-> *Public repository coming soon.*
-
-## MockupWorkflow.Shared
-
-**Purpose**
-
-Provides shared models, contracts, and common libraries used across the Mockup Workflow Platform to ensure consistency between services.
-
-**Responsibilities**
-
-- Define shared data models
-- Maintain common DTOs and contracts
-- Provide reusable utility classes
-- Standardize communication between services
-- Reduce duplicated code across repositories
-
-**Technologies**
-
-- .NET 10
-- C#
-- Shared Class Library
-
-**Repository**
-
-> *Public repository coming soon.*
-
-## MockupWorkflow.BuildUploader
-
-**Purpose**
-
-Provides a command-line utility for preparing and uploading workflow assets into the platform while preserving the expected batch and product directory structure.
-
-**Responsibilities**
-
-- Upload input folders
-- Upload mockup folders
-- Preserve batch directory structures
-- Support workflow initialization
-- Integrate with PNGAPI
-
-**Technologies**
-
-- .NET 10
-- C#
-- Command-Line Interface (CLI)
-- REST API
-
-**Repository**
-
-[swisherman/MockupWorkflow.BuildUploader](https://github.com/swisherman/MockupWorkflow.BuildUploader)
 
 ## Workflow
 
