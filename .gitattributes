@@ -1,5 +1,4 @@
 * text=auto
-
 *.cs      text
 *.js      text
 *.json    text
@@ -8,3 +7,4 @@
 *.yaml    text
 *.ps1     text
 *.sh      text
+templates/printable-wall-art/listing-info-*.psd filter=lfs diff=lfs merge=lfs -text
